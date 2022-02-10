@@ -15,7 +15,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('extract');
+            $table->string('content');
+            $table->enum('access',['private','public']);
+            $table->boolean('expire');
+            $table->boolean('comment');
+            $table->integer('user_id');
             $table->timestamps();
+            $table->softDelete();
         });
     }
 
